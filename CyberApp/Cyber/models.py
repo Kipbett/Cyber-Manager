@@ -40,10 +40,10 @@ class AllocateVisitors(models.Model):
     computer = models.ForeignKey(Computers, on_delete=models.CASCADE)
     visitor_name = models.CharField(max_length=50)
     id_no = models.IntegerField()
-    phone_number = models.IntegerField()
+    phone_number = models.CharField(max_length=10)
     reason = models.CharField(max_length=100)
-    date_of_visit = models.DateField(default=timezone.now())
-    time_in = models.TimeField(default=timezone.localtime())
+    date_of_visit = models.DateField(default=timezone.now)
+    time_in = models.TimeField(default=datetime.datetime.now())
     time_out = models.TimeField(null=True, blank=True)
     total_time = models.IntegerField(null=True, blank=True)
 

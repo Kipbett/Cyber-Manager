@@ -1,0 +1,4 @@
+{
+    "terminal.integrated.accessibleViewFocusOnCommandExecution": true,
+    "python.terminal.executeInFileDir": true
+}

@@ -24,7 +24,8 @@ def computers(request):
         else:
             form = AllocateStudentForm(request.POST)
 
-    return render(request, 'home.html', {'computers': comps, 'form': form})
+    title = "Jitume Lab"
+    return render(request, 'home.html', {'computers': comps, 'form': form, 'title': title})
 
 def allocate_class(request):
     form = AllocateClassForm(request.POST)
@@ -39,7 +40,8 @@ def allocate_class(request):
 
 def allocated_classes(request):
     allocated_class = AllocateClass.objects.filter(class_end__isnull=True)
-    return render(request, 'allocated-classes.html', {'allocated_classes': allocated_class})
+    title = 'Allocated Classes'
+    return render(request, 'allocated-classes.html', {'allocated_classes': allocated_class, 'title': title})
 
 def end_class(request, id):
     end_class = get_object_or_404(AllocateClass, id=id, class_end__isnull=True)
@@ -86,8 +88,8 @@ def allocated_visitors(request):
 
 def checkout_visitor(request, id):
     checkout_visit = get_object_or_404(AllocateVisitors, id=id, time_out__isnull=True)
-    checkout_visit.time_out = timezone.localtime()
-    # checkout_visit.total_time = checkout_visit.time_in - checkout_visit.time_out
+    checkout_visit.time_out = datetime.datetime.now()
+    # checkout_visit.total_time = AllocateVisitors.getDuration()
     checkout_visit.save()
     return redirect('allocated-visitors')
 

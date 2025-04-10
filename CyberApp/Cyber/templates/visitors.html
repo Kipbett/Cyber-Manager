@@ -1,16 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<form method="post">
-    <table>
-        {% csrf_token %}
-        {{ form.as_table}}
-    </table>
-    <input type="submit" value="ALLOCATE"/>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body_block %}
+<div class="card visitor-form">
+    <form method="post" class=" container form">
+
+    {% csrf_token %}
+    <div class="from-group">
+        <div class="form-control">
+            <label>Visitor Name</label>
+            {{form.visitor_name}}
+        </div>
+        </br>
+        <div class="form-control">
+            <label>Visitor ID</label>
+            {{ form.id_no}}
+        </div>
+        </br>
+        <div class="form-control">
+            <label>Phone No.</label>
+            {{ form.phone_number }}
+        </div>
+        </br>
+        <div class="form-control">
+            <label>Reason</label>
+            {{ form.reason }}
+        </div>
+        </br>
+        <div class="form-control">
+            <label>Computer</label>
+            {{ form.computer }}
+        </div>
+    </div>
+        </br>
+    <input type="submit" value="ALLOCATE" class="btn btn-primary"/>
 </form>
-</body>
-</html>
+</div>
+{% endblock %}

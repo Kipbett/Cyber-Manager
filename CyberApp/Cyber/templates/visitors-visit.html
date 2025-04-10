@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body_block %}
 <h2>All Outsider visits</h2>
 <table class="table">
     <thead>
@@ -14,8 +11,8 @@
             <td>Phone Number</td>
             <td>Check In Time</td>
             <td>Check Out Time</td>
+            <td>Date of Visit</td>
             <td>Reason</td>
-            <td>Total Time</td>
         </tr>
     </thead>
     <tbody>
@@ -26,11 +23,11 @@
                 <td>{{ visit.phone_number }}</td>
                 <td>{{ visit.time_in }}</td>
                 <td>{{ visit.time_out }}</td>
+                <td>{{ visit.date_of_visit}}</td>
                 <td>{{ visit.reason }}</td>
-                <td>{{ visit.total_time }}</td>
             </tr>
         {% endfor %}
     </tbody>
 </table>
-</body>
-</html>
+
+{% endblock %}
